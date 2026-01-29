@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman Electronics - All Types of Electronics | Malda, West Bengal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff006e;
+            --accent: #ffbe0b;
+            --dark: #0a0e27;
+            --darker: #050814;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(135deg, #0a0e27 0%, #050814 50%, #0d1b3a 100%);
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(255, 190, 11, 0.05) 0%, transparent 50%);
+            animation: bgMove 20s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, -50px) rotate(180deg); }
+        }
+
+        /* Grid Pattern */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 0, 110, 0.6)); }
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            animation: slideDown 1s ease-out 0.2s backwards;
+        }
+
+        .hero .location {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 40px;
+            animation: slideDown 1s ease-out 0.4s backwards;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            position: relative;
+            background: rgba(10, 14, 39, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: -1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4),
+                        0 0 100px rgba(255, 0, 110, 0.2);
+        }
+
+        .product-card:hover::before {
+            opacity: 0.6;
+        }
+
+        .product-icon {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
+            border-radius: 15px;
+            transition: all 0.5s;
+        }
+
+        .product-card:hover .product-icon {
+            transform: scale(1.1) rotateY(180deg);
+        }
+
+        .product-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--light);
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Visiting Card Section */
+        .card-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .visiting-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0d1529 100%);
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 212, 255, 0.4),
+                        inset 0 0 50px rgba(0, 212, 255, 0.1);
+            transform-style: preserve-3d;
+            transition: all 0.6s;
+        }
+
+        .visiting-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: cardGlow 8s linear infinite;
+        }
+
+        @keyframes cardGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .visiting-card:hover {
+            transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
+            box-shadow: 0 35px 100px rgba(0, 212, 255, 0.6),
+                        inset 0 0 80px rgba(0, 212, 255, 0.15);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .card-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 25px 0;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card-info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+
+        .card-info-item i {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .card-products {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .card-product-tag {
+            padding: 8px 16px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .card-product-tag:hover {
+            background: rgba(0, 212, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+            }
+
+            .visiting-card {
+                padding: 30px;
+            }
+
+            .card-logo {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+        .product-card:nth-child(8) { animation-delay: 0.8s; }
+        .product-card:nth-child(9) { animation-delay: 0.9s; }
+        .product-card:nth-child(10) { animation-delay: 1s; }
+        .product-card:nth-child(11) { animation-delay: 1.1s; }
+        .product-card:nth-child(12) { animation-delay: 1.2s; }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">AMAN ELECTRONICS</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <span>9851729800</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Malda, West Bengal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your Complete Electronics Destination</h1>
+            <p>All Types of Electronics Items Under One Roof</p>
+            <p class="location">Serving Malda & Surrounding Areas</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Our Premium Products</h2>
+            <div class="products-grid">
+                <!-- LED TV -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">📺</div>
+                    <h3 class="product-name">LED TV</h3>
+                    <p class="product-desc">Latest Smart TVs with crystal-clear display & vibrant colors</p>
+                </div>
+
+                <!-- Fan -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🌀</div>
+                    <h3 class="product-name">Fans</h3>
+                    <p class="product-desc">Energy-efficient ceiling & table fans for every room</p>
+                </div>
+
+                <!-- Mixer Grinder -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">⚙️</div>
+                    <h3 class="product-name">Mixer Grinder</h3>
+                    <p class="product-desc">Powerful grinding solutions for your kitchen needs</p>
+                </div>
+
+                <!-- Iron -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🔥</div>
+                    <h3 class="product-name">Iron</h3>
+                    <p class="product-desc">Steam & dry irons for perfect wrinkle-free clothes</p>
+                </div>
+
+                <!-- Free Dish -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">📡</div>
+                    <h3 class="product-name">Free Dish</h3>
+                    <p class="product-desc">DTH services with wide channel selection</p>
+                </div>
+
+                <!-- Speakers -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🔊</div>
+                    <h3 class="product-name">Speakers</h3>
+                    <p class="product-desc">Premium sound systems for immersive audio experience</p>
+                </div>
+
+                <!-- Battery -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🔋</div>
+                    <h3 class="product-name">Battery</h3>
+                    <p class="product-desc">Long-lasting inverter & vehicle batteries</p>
+                </div>
+
+                <!-- Home Theater -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🎬</div>
+                    <h3 class="product-name">Home Theater</h3>
+                    <p class="product-desc">Cinematic surround sound systems for your home</p>
+                </div>
+
+                <!-- Remote -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🎮</div>
+                    <h3 class="product-name">Remote Controls</h3>
+                    <p class="product-desc">Universal remotes for all your devices</p>
+                </div>
+
+                <!-- Music System -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🎵</div>
+                    <h3 class="product-name">Music System</h3>
+                    <p class="product-desc">High-fidelity audio systems for music lovers</p>
+                </div>
+
+                <!-- DJ Equipment -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🎧</div>
+                    <h3 class="product-name">DJ Equipment</h3>
+                    <p class="product-desc">Professional DJ setups for events & parties</p>
+                </div>
+
+                <!-- All Electronics -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">⚡</div>
+                    <h3 class="product-name">More Electronics</h3>
+                    <p class="product-desc">Wide range of electronic accessories & gadgets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visiting Card Section -->
+    <section class="card-section">
+        <div class="container">
+            <h2 class="section-title">Digital Visiting Card</h2>
+            <div class="visiting-card">
+                <div class="card-content">
+                    <div class="card-logo">AMAN ELECTRONICS</div>
+                    
+                    <div class="card-divider"></div>
+                    
+                    <div class="card-info">
+                        <div class="card-info-item">
+                            <span>📞</span>
+                            <span><strong>9851729800</strong></span>
+                        </div>
+                        <div class="card-info-item">
+                            <span>📍</span>
+                            <span>Malda, West Bengal</span>
+                        </div>
+                        <div class="card-info-item">
+                            <span>⚡</span>
+                            <span>All Types of Electronics Items</span>
+                        </div>
+                    </div>
+
+                    <div class="card-divider"></div>
+
+                    <div class="card-products">
+                        <span class="card-product-tag">📺 LED TV</span>
+                        <span class="card-product-tag">🌀 Fans</span>
+                        <span class="card-product-tag">⚙️ Mixer</span>
+                        <span class="card-product-tag">🔥 Iron</span>
+                        <span class="card-product-tag">📡 Free Dish</span>
+                        <span class="card-product-tag">🔊 Speakers</span>
+                        <span class="card-product-tag">🔋 Battery</span>
+                        <span class="card-product-tag">🎬 Home Theater</span>
+                        <span class="card-product-tag">🎮 Remotes</span>
+                        <span class="card-product-tag">🎵 Music System</span>
+                        <span class="card-product-tag">🎧 DJ Equipment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Aman Electronics | Quality Electronics Since Years | Malda, West Bengal</p>
+            <p style="margin-top: 10px; color: var(--primary);">Call Now: 9851729800 | Visit Our Store Today!</p>
+        </div>
+    </footer>
+
+    <script>
+        // 3D Mouse Movement Effect
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.product-card, .visiting-card');
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const cardX = (rect.left + rect.width / 2) / window.innerWidth - 0.5;
+                const cardY = (rect.top + rect.height / 2) / window.innerHeight - 0.5;
+
+                const deltaX = (mouseX - cardX) * 10;
+                const deltaY = (mouseY - cardY) * 10;
+
+                card.style.transform = `perspective(1000px) rotateY(${deltaX}deg) rotateX(${-deltaY}deg)`;
+            });
+        });
+
+        // Reset transform on mouse leave
+        document.addEventListener('mouseleave', () => {
+            const cards = document.querySelectorAll('.product-card, .visiting-card');
+            cards.forEach(card => {
+                card.style.transform = '';
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Product card click animation
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
